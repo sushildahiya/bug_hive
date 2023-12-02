@@ -47,21 +47,22 @@ Bughive is a simple issue tracker system designed to help teams manage their pro
 
 * /issues - GET request - Render the issues view with projects, users, employees, detailed issue information, and issue ID.
 * /issues/:id - GET request - Render detailed information about a specific issue.
+  
 ***`issuesController.js`***
 ### Create Issue:
+*/create-issue - POST request - Handle the creation of a new issue, including file uploads.
 
-/create-issue - POST request - Handle the creation of a new issue, including file uploads.
-Update Status:
+### Update Status:
+* /update/:id - POST request - Update the status of an existing issue.
+  
+### Filter Issues:
+* /filter - POST request - Filter issues based on selected labels.
 
-/update/:id - POST request - Update the status of an existing issue.
-Filter Issues:
+### Search Issues:
+* /search - POST request - Search for issues using provided keywords.
 
-/filter - POST request - Filter issues based on selected labels.
-Search Issues:
-
-/search - POST request - Search for issues using provided keywords.
-projectsController.js
-Create Project:
+## projectsController.js
+### Create Project:
 
 /create-project - POST request - Handle the creation of a new project, including file uploads.
 Delete Project:
