@@ -61,25 +61,26 @@ Bughive is a simple issue tracker system designed to help teams manage their pro
 ### Search Issues:
 * /search - POST request - Search for issues using provided keywords.
 
-## projectsController.js
+*** `projectsController.js` ***
 ### Create Project:
 
-/create-project - POST request - Handle the creation of a new project, including file uploads.
-Delete Project:
+* /create-project - POST request - Handle the creation of a new project, including file uploads.
+### Delete Project:
 
-/delete/:id - GET request - Delete a project with the provided ID.
-userController.js
-User Authentication:
-/sign-in - GET request - Render the sign-in page.
-/create-session - POST request - Create a new session (user sign-in).
-/sign-up - POST request - Render the sign-up page and create a new user.
-/sign-out - GET request - Sign out the user.
-routes/index.js
-Define routes for various functionalities using the methods from homeController.
-router/issue.js
-Define routes for issue-related functionalities using the methods from issuesController.
-router/projects.js
-Define routes for project-related functionalities using the methods from projectsController.
-router/user.js
-Define routes for user-related functionalities using the methods from userController.
-Contributors
+* /delete/:id - GET request - Delete a project with the provided ID.
+*** `userController.js` ***
+
+### User Authentication:
+* /sign-in - GET request - Render the sign-in page.
+* /create-session - POST request - Create a new session (user sign-in).
+* /sign-up - POST request - Render the sign-up page and create a new user.
+* /sign-out - GET request - Sign out the user.
+
+*** `routes/index.js` ***
+* Define routes for various functionalities using the methods from homeController.
+*** `router/issue.js` ***
+* Define routes for issue-related functionalities using the methods from issuesController.
+*** `router/projects.js` ***
+* Define routes for project-related functionalities using the methods from projectsController.
+*** `router/user.js` ***
+* Define routes for user-related functionalities using the methods from userController.
