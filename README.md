@@ -16,23 +16,23 @@ Bughive is a simple issue tracker system designed to help teams manage their pro
 ## Features
 ***Dashboard***: View an overview of your assigned issues.
 
-Projects: Manage and explore all your projects.
+***Projects***: Manage and explore all your projects.
 
-Issues: Track and update the status of individual issues.
+***Issues***: Track and update the status of individual issues.
 
-Create Issue: Easily create a new issue, including file attachments.
+***Create Issue***: Easily create a new issue, including file attachments.
 
-Update Status: Change the status of an existing issue.
+***Update Status***: Change the status of an existing issue.
 
-Filter Issues: Filter issues based on selected labels.
+***Filter Issues***: Filter issues based on selected labels.
 
-Search Issues: Search for issues using keywords.
+***Search Issues***: Search for issues using keywords.
 
-Create Project: Add a new project with a detailed description and avatar.
+***Create Project***: Add a new project with a detailed description and avatar.
 
-Delete Project: Remove a project from the system.
+***Delete Project***: Remove a project from the system.
 
-User Management: Sign up, sign in, and sign out functionalities.
+**User Management**: Sign up, sign in, and sign out functionalities.
 
 Controllers and Routes
 homeController.js
