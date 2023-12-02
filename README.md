@@ -3,25 +3,18 @@
 Bughive is a simple issue tracker system designed to help teams manage their projects efficiently. This system allows users to create projects, track issues, and collaborate seamlessly.
 
 ## Installation
-Clone the repository:
+1. Clone the repository:
  * git clone https://github.com/your-username/bughive.git
  * cd bughive
-Install dependencies:
+2. Install dependencies:
+ * npm install
+3. Configure your MongoDB connection in the config/database.js file.
+4. Run the application:
+ * npm start
+5. Visit http://localhost:3000 in your web browser to access Bughive.
 
-bash
-Copy code
-npm install
-Configure your MongoDB connection in the config/database.js file.
-
-Run the application:
-
-bash
-Copy code
-npm start
-Visit http://localhost:3000 in your web browser to access Bughive.
-
-Features
-Dashboard: View an overview of your assigned issues.
+## Features
+***Dashboard***: View an overview of your assigned issues.
 
 Projects: Manage and explore all your projects.
 
