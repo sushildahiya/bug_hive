@@ -36,19 +36,19 @@ Bughive is a simple issue tracker system designed to help teams manage their pro
 
 ## Controllers and Routes
 ***`homeController.js`***
-Dashboard:
+### Dashboard:
 
-/ - GET request - Render the dashboard with user information and assigned issues.
-Projects:
+* / - GET request - Render the dashboard with user information and assigned issues.
+### Projects:
 
-/projects - GET request - Render the projects view with user information, project list, and associated issues.
-/projects/:id - GET request - Render project details and associated issues.
-Issues:
+* /projects - GET request - Render the projects view with user information, project list, and associated issues.
+* /projects/:id - GET request - Render project details and associated issues.
+### Issues:
 
-/issues - GET request - Render the issues view with projects, users, employees, detailed issue information, and issue ID.
-/issues/:id - GET request - Render detailed information about a specific issue.
-issuesController.js
-Create Issue:
+* /issues - GET request - Render the issues view with projects, users, employees, detailed issue information, and issue ID.
+* /issues/:id - GET request - Render detailed information about a specific issue.
+***`issuesController.js`***
+### Create Issue:
 
 /create-issue - POST request - Handle the creation of a new issue, including file uploads.
 Update Status:
