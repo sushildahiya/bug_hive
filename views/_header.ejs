@@ -1,0 +1,22 @@
+<link rel="stylesheet" href="/css/_header.css"/>
+<header>
+    <nav class="nav-container" >
+        <div class="nav-logo">
+            <img src="https://www.clipartmax.com/png/middle/254-2547646_hive-is-a-two-player-strategy-game-in-which-players-hive-pillbug.png" alt="Hive Is A Two-player Strategy Game In Which Players - Hive: Pillbug Pocket Expansion@clipartmax.com" >
+        </div>
+        
+        <div class="nav-profile">
+
+            <div id="user-name"><span><%=user.username%></span></div>
+            <div id="profile-picture" class="dropbtn">
+                <img src="<%= user.avatar%>"/>
+                <div class="dropdown-content">
+                    <a href="/user/sign-out">Signout</a>
+                    </div>
+            </div>
+        </div>
+    </nav>
+   
+    
+</header>
+<script src="/js/_header.js"></script>

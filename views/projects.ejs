@@ -1,0 +1,119 @@
+<link rel="stylesheet" href="/css/projects.css"/>
+
+<div class="projects-wrapper">
+    <%if(id==null){%>
+        <div class="create-project-wrapper">
+            <span id="myBtn"><i class='bx bx-message-alt-add'></i> Create Project</span>
+        </div>
+        <div class="project-cards-wrapper">
+           
+            <%for(let i=0;i<projects.length;i++){%>
+    
+                <div class="project-detail">
+                    <div class="project-detail-content">
+                        <div class="profile-image">
+                            <img src="<%=projects[i].project_avatar%>">
+                        </div>
+                        <div class="profile-details-cont">
+                            <h3><%=projects[i].name%></h3>
+                            <h5>- <%=projects[i].author%></h5>
+                        </div>
+                    </div>
+                    <div class="view-btn"><a href="/projects/<%=projects[i]._id%>"> View</a>
+                        <a href="/projects/delete/<%=projects[i]._id%>"> Delete</a></div>
+                </div>
+    
+    
+                <%}%>
+        </div>
+    
+        <div id="myModal" class="modal">
+            <!-- Modal content -->
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <br/>
+                <br/>
+             
+                <form action="/projects/create-project" method="POST" enctype="multipart/form-data" class="create-project form">
+                    <div class="form-content">
+                        <div class="project-info-content">
+                            <label for="name">Name</label>
+                            <br/>
+                            <input type="text" name="name" placeholder="Name" required/>
+                            <br/>
+                            <br/>
+                            <label for="description">Description</label>
+                            <br/>
+                            <textarea type="textarea" name="description" placeholder="Description" required></textarea>
+                        </div>
+                        <div class="project-avatar">
+                            <div id="image-content"></div>
+                            <input type="file" name="project_avatar" required/>
+                        </div>
+                    </div>
+                    <br/>
+                    <br/>
+                    <br/>
+                    <div class="submit-btn">
+                        <input type="submit" value="Create Project"/>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <%}else{%>
+                    <div class="single-project-content">
+                        <div class="single-project-detail">
+                            <div class="single-project-img">
+                                <img src="<%=project.project_avatar%>"/>
+                            </div>
+                            <div class="single-project-container">
+                                <h1><%=project.name%></h1>
+                                <h3>Description: <%=project.description%></h3>
+                                <h4>Author: <%=project.author%></h4>
+                            </div>
+                        </div>
+                        
+                        <div class="project-issues">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Summary</th>
+                                        
+                                        <th>Status</th>
+                                        <th>Priority</th>
+
+                                        <th>Assigned To</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                            <% for(let i=0;i<issues.length;i++){%>
+                                <tr>
+                                <td>
+                                    <%=issues[i].summary%>
+                                </td>
+                                <td>
+                                    <%=issues[i].status%>
+                                </td>
+                                <td class="<%=issues[i].priority%>">
+                                    <%=issues[i].priority%>
+                                </td>
+                                <td>
+                                    <%=issues[i].assigned_to%>
+                                </td>
+                                <td>
+                                    <a href="/issues/<%=issues[i].id%>">View</a>
+                                    
+                                </td>
+                            </tr>
+                                <%}%>
+                                </tbody>
+                                </table>
+                        </div>
+                    </div>
+                    
+
+            <%}%>
+   
+</div>
+
+<script src="/js/projects.js"></script>

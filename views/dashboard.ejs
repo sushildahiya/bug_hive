@@ -1,0 +1,151 @@
+<link rel="stylesheet" href="/css/dashboard.css" />
+<div class="dashboard-wrapper">
+    <div class="my-task-container">
+        <div class="heading-container">
+            <h3>My Tasks</h3>
+        </div>
+        <div class="mytask-content">
+            <div class="open-wrapper">
+                <div class="heading">
+                    <h3>ToDo</h3>
+                </div>
+                <%for(let i=0;i<issues.length;i++){%>
+                    <%if(issues[i].status=="Open"){%>
+                        <div class="card-container">
+                            <div class="priority-cont">
+                                <h4>
+                                    <%=issues[i].priority%>
+                                </h4>
+                            </div>
+                            <div class="summary-cont">
+                                <h3>
+                                    <%=issues[i].summary%>
+                                </h3>
+                                <h4>- <%=user.username %>
+                                </h4>
+                            </div>
+                            <div class="progress">
+                                <div class="progress-container">
+                                    <div class="color-container p25"></div>
+                                </div>
+                                <div class="progress-content">
+                                    <p>Progress</p>
+                                    <p>25%</p>
+                                </div>
+
+                            </div>
+                        </div>
+                        <%}%>
+
+                            <%}%>
+            </div>
+            <div class="rca-wrapper">
+                <div class="heading">
+                    <h3>RCA</h3>
+                </div>
+                <%for(let i=0;i<issues.length;i++){%>
+                    <%if(issues[i].status=="RCA"){%>
+                        <div class="card-container">
+                            <div class="priority-cont">
+                                <h4>
+                                    <%=issues[i].priority%>
+                                </h4>
+                            </div>
+                            <div class="summary-cont">
+                                <h3>
+                                    <%=issues[i].summary%>
+                                </h3>
+                                <h4>- <%=user.username %>
+                                </h4>
+                            </div>
+                            <div class="progress">
+                                <div class="progress-container">
+                                    <div class="color-container p50"></div>
+                                </div>
+                                <div class="progress-content">
+                                    <p>Progress</p>
+                                    <p>50%</p>
+                                </div>
+
+                            </div>
+                        </div>
+                        <%}%>
+
+                            <%}%>
+            </div>
+            <div class="monitoring-wrapper">
+                <div class="heading">
+                    <h3>Monitoring</h3>
+                </div>
+                <%for(let i=0;i<issues.length;i++){%>
+                    <%if(issues[i].status=="Monitoring"){%>
+                        <div class="card-container">
+                            <div class="priority-cont">
+                                <h4>
+                                    <%=issues[i].priority%>
+                                </h4>
+                            </div>
+                            <div class="summary-cont">
+                                <h3>
+                                    <%=issues[i].summary%>
+                                </h3>
+                                <h4>- <%=user.username %>
+                                </h4>
+                            </div>
+                            <div class="progress">
+                                <div class="progress-container">
+                                    <div class="color-container p75"></div>
+                                </div>
+                                <div class="progress-content">
+                                    <p>Progress</p>
+                                    <p>75%</p>
+                                </div>
+
+                            </div>
+                        </div>
+                        <%}%>
+
+                            <%}%>
+            </div>
+            <div class="close-wrapper">
+                <div class="heading">
+                    <h3>Closed</h3>
+                </div>
+                <%for(let i=0;i<issues.length;i++){%>
+                    <%if(issues[i].status=="Closed"){%>
+                        <div class="card-container">
+                            <div class="priority-cont">
+                                <h4>
+                                    <%=issues[i].priority%>
+                                </h4>
+                            </div>
+                            <div class="summary-cont">
+                                <h3>
+                                    <%=issues[i].summary%>
+                                </h3>
+                                <h4>- <%=user.username %>
+                                </h4>
+                            </div>
+                            <div class="progress">
+                                <div class="progress-container">
+                                    <div class="color-container p100"></div>
+                                </div>
+                                <div class="progress-content">
+                                    <p>Progress</p>
+                                    <p>100%</p>
+                                </div>
+
+                            </div>
+                        </div>
+                        <%}%>
+
+                            <%}%>
+            </div>
+        </div>
+
+
+    </div>
+
+
+
+</div>

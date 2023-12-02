@@ -1,0 +1,245 @@
+<link rel="stylesheet" href="/css/issues.css" />
+
+<div class="issues-wrapper">
+    <%if(id==null){%>
+        <div class="create-issues-wrapper">
+            <span id="myBtn"> <i class='bx bxs-bug'></i> Create Issue</span>
+        </div>
+        <div class="filter-container">
+            <div class="filter-content">
+                <button id="filterBtn" onclick="toggleFilterModal()">Filter Issues</button>
+            </div>
+            <div id="filterModal" class="modal" style="display: none;">
+                <!-- Modal content -->
+                <div class="modal-content">
+                    <span class="close" onclick="closeFilterModal()">&times;</span>
+                    <!-- Filter Form -->
+                    <form action="/issue/filter" method="POST">
+                        <br/>
+                        <label for="labels">Filter by Labels:</label>
+                        <br/>
+                        <input type="checkbox" name="labels" value="Bug"> Bug<br/>
+                        <input type="checkbox" name="labels" value="UI Improvement"> UI Improvement<br/>
+                        <input type="checkbox" name="labels" value="Documentation"> Documentation<br/>
+                        <input type="checkbox" name="labels" value="Enhancement"> Enhancement<br/><br/>
+                        <input type="submit" value="Apply Filter">
+                    </form>
+                </div>
+            </div>
+            <div class="search-content">
+                <button id="searchBtn" onclick="toggleSearchModal()">Search Issues</button>
+
+            </div>
+            <div id="searchModal" class="modal" style="display: none;">
+                <!-- Modal content -->
+                <div class="modal-content">
+                    <span class="close" onclick="closeSearchModal()">&times;</span>
+                    <!-- Search Form -->
+                    <form action="/issue/search" method="POST">
+                        <label for="search">Search Issues:</label>
+                        <input type="text" name="search" placeholder="Enter keywords">
+                        <input type="submit" value="Search">
+                    </form>
+                </div>
+            </div>
+            
+    </div>
+        <div class="issue-list-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Project</th>
+                        <th>Summary</th>
+                        
+                        <th>Status</th>
+                        <th>Assigned To</th>
+                        <th>Priority</th>
+                        <th>Details</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% for(let i=0;i<employees.length;i++){%>
+                        <tr>
+                            <td><%=employees[i].project%></td>
+                            <td><%=employees[i].summary%></td>
+                            
+                            <td ><%=employees[i].status%></td>
+                            <td><%=employees[i].assigned_to%></td>
+                            <td class="<%=employees[i].priority%>"><%=employees[i].priority%></td>
+                            <td><a href="/issues/<%=employees[i].id%>">View Details</a></td>
+                        </tr>
+                        <%}%>
+                </tbody>
+            </table>
+        </div>
+    
+        <div id="myModal" class="modal">
+            <!-- Modal content -->
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <br />
+                <br />
+    
+                <form action="/issue/create-issue" method="POST" enctype="multipart/form-data"
+                    class="create-project form">
+                    <div class="form-content">
+                        <div class="project-info-content">
+                            <label for="summary">Summary</label>
+                            <br />
+                            <input type="text" name="summary" placeholder="Summary" required />
+                            <br />
+                            <br />
+                            <label for="description">Description</label>
+                            <br />
+                            <textarea type="textarea" name="description" placeholder="Description" required></textarea>
+                            <br />
+                            <br />
+                            <label for="priority">Priority</label>
+                            <br />
+                            <select class="form-select form-select" aria-label="Default select example" name="priority"
+                                required>
+    
+                                <option value="P0"> P0</option>
+                                <option value="P1"> P1</option>
+                                <option value="P2"> P2 </option>
+                                <option value="P3"> P3</option>
+                                <option value="P4"> P4</option>
+    
+                            </select>
+                            <br />
+                            <br />
+                            <label for="project">Project</label>
+                            <br />
+                            <select class="form-select form-select" aria-label="Default select" name="project" required>
+                                <% for(let i=0; i<projects.length ; i++){ %>
+    
+                                    <option value=<%=projects[i].id %> > <%= projects[i].name %>
+                                    </option>
+                                    <%}%>
+                            </select>
+                            <br />
+                            <br />
+                            <label for="assignee">Assignee</label>
+                            <br />
+                            <select class="form-select form-select" aria-label="Default select" name="assignee" required>
+                                <% for(let i=0; i<users.length ; i++){ %>
+    
+                                    <option value="<%=users[i]._id%>" > <%= users[i].username %>
+                                    </option>
+                                    <%}%>
+                            </select>
+                            <br />
+                            <br />
+                        </div>
+                        <div class="screenshot-container">
+                            <label for="vehicle1">Screenshot</label><br/>
+                            <input type="file" name="screenshot" required />
+                        </div>
+                        <br/>
+                        <label for="labels">Labels:</label><br/>
+                        <input type="checkbox" name="labels" value="Bug">
+                        <label for="bug"> Bug</label><br>
+                        <input type="checkbox" name="labels" value="UI Improvement">
+                        <label for="ui_improvement"> UI Improvement</label><br>
+                        <input type="checkbox" name="labels" value="Documentation" >
+                        <label for="documentation"> Documentation</label><br>
+                        <input type="checkbox" name="labels" value="Enhancement" >
+                        <label for="enhancement"> Enhancement</label><br>
+                       
+                    </div>
+                    <br />
+                    <div class="submit-btn">
+                        <input type="submit" value="Create Issue" />
+                    </div>
+                </form>
+            </div>
+        </div>              
+    <%}else{%>
+
+        <div class="issue-container">
+            <div class="issue-summary">
+                <h3>Summary: <%= a_Issue.summary%></h3>
+                <br/>
+                <h3>Description: <%= a_Issue.description%></h3>
+                <div class="issue-content">
+                    <div class="status-container"><h3>Status: <span id="statusText"><%= a_Issue.status%></span></h3>
+                        <button id="editBtn" onclick="editStatus()">Edit</button>
+                        <form method="POST" action="/issue/update/<%=a_Issue.id%>">
+                            <select id="statusDropdown" style="display: none;" name="status">
+                                <option value="Open">Open</option>
+                                <option value="RCA">RCA</option>
+                                <option value="Monitoring">Monitoring</option>
+                                <option value="Closed">Closed</option>
+                            </select>
+                            <input type="submit" value="Update" id="updateBtn" style="display: none;"/>
+                        </form>
+                        
+                    </div>
+                    <h3>Priority: <%= a_Issue.priority%></h3>
+                    <h3>Project: <%= a_Issue.project%></h3>
+                </div>
+                <div class="label-content"><h3>Labels:</h3>
+                    <% for(let i=0;i<a_Issue.labels.length;i++){ %>
+                        <h4><%=a_Issue.labels[i]%></h4>
+                    <%}%>
+                </div>
+                <div class="author-content">
+                    <h3>Author: <%= a_Issue.author%></h3>
+                    <h3>Assigned To: <%= a_Issue.assigned_to%></h3>
+                </div>
+                <div class="screenshot-content">
+                    <h4>Screenshot: </h4>
+                    <img src="<%= a_Issue.screenshot%>">
+                </div>
+               
+                
+
+            </div>
+        </div>
+
+
+        <%}%>
+</div>
+<script src="/js/issues.js">
+     
+</script><script>
+     function toggleFilterModal() {
+        var modal = document.getElementById('filterModal');
+        modal.style.display = modal.style.display === 'none' ? 'block' : 'none';
+    }
+
+    function closeFilterModal() {
+        var modal = document.getElementById('filterModal');
+        modal.style.display = "none";
+    }
+    function toggleSearchModal() {
+        var modal = document.getElementById('searchModal');
+        modal.style.display = modal.style.display === 'none' ? 'block' : 'none';
+    }
+
+    function closeSearchModal() {
+        var modal = document.getElementById('searchModal');
+        modal.style.display = 'none';
+    }
+    function editStatus() {
+                var statusText = document.getElementById("statusText");
+                var editBtn = document.getElementById("editBtn");
+                var updateBtn = document.getElementById("updateBtn");
+
+                var statusDropdown = document.getElementById("statusDropdown");
+
+                // Toggle display between status text and dropdown
+                if (statusText.style.display === "none") {
+                    statusText.style.display = "inline";
+                    statusDropdown.style.display = "none";
+                    updateBtn.style.display="none"
+                    editBtn.style.display="inline";
+
+                } else {
+                    statusText.style.display = "none";
+                    editBtn.style.display="none";
+                    updateBtn.style.display="inline"
+                    statusDropdown.style.display = "inline";
+                }
+            }
+</script>

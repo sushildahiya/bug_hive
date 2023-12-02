@@ -1,0 +1,93 @@
+<link rel="stylesheet" href="/css/issues.css"/>
+<div class="filter-container-wrapper">
+    <div class="filter-container">
+
+        <div class="filter-content">
+            <button id="filterBtn" onclick="toggleFilterModal()">Filter Issues</button>
+        </div>
+        <div id="filterModal" class="modal" style="display: none;">
+            <!-- Modal content -->
+            <div class="modal-content">
+                <span class="close" onclick="closeFilterModal()">&times;</span>
+                <!-- Filter Form -->
+                <form action="/issue/filter" method="POST">
+                    <br/>
+                        <label for="labels">Filter by Labels:</label>
+                        <br/>
+                        <input type="checkbox" name="labels" value="Bug"> Bug<br/>
+                        <input type="checkbox" name="labels" value="UI Improvement"> UI Improvement<br/>
+                        <input type="checkbox" name="labels" value="Documentation"> Documentation<br/>
+                        <input type="checkbox" name="labels" value="Enhancement"> Enhancement<br/><br/>
+                        <input type="submit" value="Apply Filter">  
+                </form>
+            </div>
+        </div>
+        <div class="search-content">
+            <button id="searchBtn" onclick="toggleSearchModal()">Search Issues</button>
+
+        </div>
+        <div id="searchModal" class="modal" style="display: none;">
+            <!-- Modal content -->
+            <div class="modal-content">
+                <span class="close" onclick="closeSearchModal()">&times;</span>
+                <!-- Search Form -->
+                <form action="/issue/search" method="POST">
+                    <label for="search">Search Issues:</label>
+                    <input type="text" name="search" placeholder="Enter keywords">
+                    <input type="submit" value="Search">
+                </form>
+            </div>
+
+        </div>
+        
+</div>
+    <div class="issues-list">
+        <table>
+            <thead>
+                <tr>
+                    <th>Project</th>
+                    <th>Summary</th>
+                    
+                    <th>Status</th>
+                    <th>Assigned To</th>
+                    <th>Priority</th>
+                    <th>Details</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% for(let i=0;i<filteredIssues.length;i++){%>
+                    <tr>
+                        <td><%=filteredIssues[i].project%></td>
+                        <td><%=filteredIssues[i].summary%></td>
+                        
+                        <td ><%=filteredIssues[i].status%></td>
+                        <td><%=filteredIssues[i].assigned_to%></td>
+                        <td class="<%=filteredIssues[i].priority%>"><%=filteredIssues[i].priority%></td>
+                        <td><a href="/issues/<%=filteredIssues[i].id%>">View Details</a></td>
+                    </tr>
+                    <%}%>
+            </tbody>
+        </table>
+       
+    </div>
+</div>
+<script>
+    function toggleFilterModal() {
+       var modal = document.getElementById('filterModal');
+       modal.style.display = modal.style.display === 'none' ? 'block' : 'none';
+   }
+
+   function closeFilterModal() {
+       var modal = document.getElementById('filterModal');
+       modal.style.display = "none";
+   }
+   function toggleSearchModal() {
+       var modal = document.getElementById('searchModal');
+       modal.style.display = modal.style.display === 'none' ? 'block' : 'none';
+   }
+
+   function closeSearchModal() {
+       var modal = document.getElementById('searchModal');
+       modal.style.display = 'none';
+   }
+   </script>
