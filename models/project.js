@@ -2,7 +2,7 @@
 const mongoose = require('mongoose');
 const multer = require('multer');
 const path = require('path');
-
+const fs = require('fs')
 // Define the path where project avatars will be stored
 const PROJECT_AVATAR_PATH = path.join('/uploads/project/avatars');
 
@@ -29,6 +29,9 @@ const projectSchema = new mongoose.Schema({
 let storage = multer.diskStorage({
     destination: function (req, file, cb) {
         // Set the destination path for storing project avatars
+        if(!fs.existsSync(path.join(__dirname, '..', PROJECT_AVATAR_PATH))){
+            fs.mkdirSync(path.join(__dirname,'..',PROJECT_AVATAR_PATH),{recursive:true})
+        }
         cb(null, path.join(__dirname, '..', PROJECT_AVATAR_PATH));
     },
     filename: function (req, file, cb) {

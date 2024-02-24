@@ -2,6 +2,7 @@
 const mongoose = require('mongoose');
 const multer = require('multer');
 const path = require('path');
+const fs = require('fs')
 
 // Define the path where screenshots will be stored
 const SCREENSHOT_PATH = path.join('/uploads/issues/avatars');
@@ -53,6 +54,9 @@ const issueSchema = new mongoose.Schema({
 // Multer storage configuration for avatar uploads
 let storage = multer.diskStorage({
     destination: function (req, file, cb) {
+        if(!fs.existsSync(path.join(__dirname, '..', SCREENSHOT_PATH))){
+            fs.mkdirSync(path.join(__dirname,'..',SCREENSHOT_PATH),{recursive:true})
+        }
         // Set the destination path for storing screenshots
         cb(null, path.join(__dirname, '..', SCREENSHOT_PATH));
     },
