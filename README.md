@@ -88,3 +88,44 @@ Bughive is a simple issue tracker system designed to help teams manage their pro
   
 ***`router/user.js`***
 * Define routes for user-related functionalities using the methods from userController.
+
+
+# Screenshots:
+
+## Login
+
+![Screenshot (85)](https://github.com/sushildahiya/bug_hive/assets/97718833/2f2c7db9-ed0a-4827-a822-489990566f17)
+
+## Sign Up
+
+![Screenshot (86)](https://github.com/sushildahiya/bug_hive/assets/97718833/1c6fb717-f8ab-4e7e-99ed-a0c69a7601e4)
+
+## Dashboard
+
+![Screenshot (78)](https://github.com/sushildahiya/bug_hive/assets/97718833/186823f2-2484-45c3-8fe2-2d094b493ecf)
+
+## Dashboard (User bug tickets)
+
+![Screenshot (79)](https://github.com/sushildahiya/bug_hive/assets/97718833/82e7a4d2-7f0a-4408-a40a-b5c8211e431c)
+
+## Projects Page
+
+![Screenshot (80)](https://github.com/sushildahiya/bug_hive/assets/97718833/b1de3c72-7093-4b61-b905-dd781b867a07)
+
+## Project details
+
+![Screenshot (81)](https://github.com/sushildahiya/bug_hive/assets/97718833/6cbe2a0d-0a65-4435-a7cb-91c6765477fe)
+
+## Issues
+
+![Screenshot (82)](https://github.com/sushildahiya/bug_hive/assets/97718833/001d04a7-b5e5-49b4-843a-fb5b254492ed)
+
+## Create a bug/issue
+
+![Screenshot (83)](https://github.com/sushildahiya/bug_hive/assets/97718833/84dc5fee-336f-4a89-86a6-05a40b404471)
+
+## Filter popup
+
+![Screenshot (84)](https://github.com/sushildahiya/bug_hive/assets/97718833/d776b910-ac7f-477d-b33b-f7857912a16c)
+
+
