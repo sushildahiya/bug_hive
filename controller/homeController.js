@@ -68,9 +68,9 @@ module.exports.issues = async (req, res) => {
     // Retrieve all projects, users, and issues from the database
     const projects = await Project.find({});
     const users = await User.find({});
-    const issues = await Issue.find({});
+    const employees = await Issue.find({author:req.user.id}).populate("project")
     let employee = {};
-    let employees = [];
+    // let employees = [];
     let id = null;
     let issue = null;
     let a_Issue = null;
@@ -103,16 +103,18 @@ module.exports.issues = async (req, res) => {
     }
 
     // Iterate over all issues and transform them to a simplified format, adding to 'employees' array
-    for (let i = 0; i < issues.length; i++) {
-        const project = await Project.findById(issues[i].project);
-        employee.project = project.name;
-        const assigned = await User.findById(issues[i].assigned_to);
-        employee.assigned_to = assigned.username;
-        employee.summary = issues[i].summary;
-        employee.id = issues[i].id;
-        employee.priority = issues[i].priority;
-        employee.status = issues[i].status;
-        employees.push(employee);
+    for (let i = 0; i < employees.length; i++) {
+        // const employees = 
+
+        // const project = await Project.findById(issues[i].project);
+        // employee.project = project.name;
+        const assigned = await User.findById(employees[i].assigned_to);
+        employees[i].assigned_to = assigned.username;
+        // employee.summary = issues[i].summary;
+        // employee.id = issues[i].id;
+        // employee.priority = issues[i].priority;
+        // employee.status = issues[i].status;
+        // employees.push(employee);
     }
 
     // Render the 'issues' view and pass projects, users, employees, detailed issue information, and issue ID
